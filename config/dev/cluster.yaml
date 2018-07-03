@@ -1,0 +1,12 @@
+template_path: templates/cluster.stack.yaml
+
+# dependencies:
+#   - vpc
+
+hooks:
+  before_create: 
+    - !cmd "echo creating EKS cluster"
+
+parameters:
+  VPCStack: !stack_output vpc::VPCStack
+
