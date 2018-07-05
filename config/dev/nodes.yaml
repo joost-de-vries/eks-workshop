@@ -1,0 +1,22 @@
+template_path: templates/nodes.stack.yaml
+
+parameters:
+  KeyName: rsa_key # The EC2 ssh key.
+
+  NodeImageId: ami-dea4d5a1 #matches N Virginia
+
+  NodeInstanceType: t2.small
+
+  #NodeAutoScalingGroupMinSize: 1 # default
+
+  #NodeAutoScalingGroupMaxSize: 3 # default
+
+  ClusterName: !stack_output cluster::ClusterName
+
+  NodeGroupName: !stack_output cluster::ClusterName # would be nice to postfix with "-nodes" But how?
+
+  ClusterControlPlaneSecurityGroup: !stack_output cluster::ClusterControlPlaneSecurityGroup
+
+  VpcId: !stack_output vpc::VpcId
+
+  Subnets: !stack_output vpc::SubnetIds
